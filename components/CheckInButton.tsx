@@ -32,6 +32,15 @@ export default function CheckInButton({ status, ready, onCheckIn }: Props) {
     if (!ready) return;
     if (status === "success" || saving.current) {
       showAlreadyTracked();
+      if (status === "success") {
+        confetti({
+          particleCount: 45,
+          spread: 60,
+          startVelocity: 30,
+          origin: { y: 0.68 },
+          colors: ["#ff6b57", "#ffcb55", "#8a62e8", "#fff4d6"],
+        });
+      }
       return;
     }
 
