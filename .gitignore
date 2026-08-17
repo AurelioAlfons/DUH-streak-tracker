@@ -1,0 +1,15 @@
+node_modules/
+.next/
+.vercel/
+
+.env
+.env.*
+!.env.example
+
+*.log
+*.tsbuildinfo
+prisma/dev.db*
+
+.DS_Store
+Thumbs.db
+

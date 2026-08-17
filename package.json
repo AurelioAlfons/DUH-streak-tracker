@@ -1,0 +1,32 @@
+{
+  "name": "duh",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "db:push": "prisma db push"
+  },
+  "dependencies": {
+    "@prisma/client": "6.19.3",
+    "canvas-confetti": "1.9.4",
+    "next": "16.3.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "web-push": "3.6.7"
+  },
+  "devDependencies": {
+    "@types/canvas-confetti": "1.9.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/web-push": "3.6.4",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "16.3.1",
+    "prisma": "6.19.3",
+    "typescript": "^5.9.0"
+  }
+}

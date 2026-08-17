@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String             @id @default(cuid())
+  passwordHash      String
+  habits            Habit[]
+  pushSubscriptions PushSubscription[]
+  createdAt         DateTime           @default(now())
+}
+
+model Habit {
+  id              String    @id @default(cuid())
+  userId          String
+  name            String
+  type            String    @default("streak")
+  currentStreak   Int       @default(0)
+  longestStreak   Int       @default(0)
+  lastSuccessDate String?
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  checkIns        CheckIn[]
+  createdAt       DateTime  @default(now())
+
+  @@index([userId, type])
+}
+
+model CheckIn {
+  id        String   @id @default(cuid())
+  habitId   String
+  date      String
+  status    String
+  habit     Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([habitId, date])
+  @@index([habitId, date])
+}
+
+model PushSubscription {
+  id       String @id @default(cuid())
+  userId   String
+  endpoint String @unique
+  p256dh   String
+  auth     String
+  timezone String
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
