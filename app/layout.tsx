@@ -6,7 +6,7 @@ import "./globals.css";
 const pixel = Press_Start_2P({ subsets: ["latin"], weight: "400", variable: "--font-pixel" });
 
 export const metadata: Metadata = {
-  title: "DUH",
+  title: "DUH | Habit Tracker",
   description: "One day at a time.",
   manifest: "/manifest.json",
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "DUH" },
